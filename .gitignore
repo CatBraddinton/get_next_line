@@ -7,3 +7,4 @@ main.c
 *.txt
 /libft/
 >>>>>>> fd22d087bcfbcd400c608dc994ac28aecdc1b1f3
+*png
