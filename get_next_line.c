@@ -5,30 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/05 10:24:46 by kdudko            #+#    #+#             */
-/*   Updated: 2019/01/05 10:25:35 by kdudko           ###   ########.fr       */
+/*   Created: 2019/01/17 18:30:56 by kdudko            #+#    #+#             */
+/*   Updated: 2019/01/17 18:31:03 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-int			get_next_line(const int fd, char **line)
+
 {
-	static char	buff[BUFF_SIZE + 1];
-	size_t 		i;
+    t_list *head;
+    t_list *link;
 
-	i = 0;
-	while (i < BUFF_SIZE)
-	{
-		read(fd, &buff[i], 1);
-		if ((buff[i] == '\n') || (buff[i] == EOF))
-		{
-			*line = ft_strsub(buff, 0, i - 1);
-			printf("%s\n", *line);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
+    head = NULL;
+    *link = (t_list *)malloc(sizeof(t_list));
+}
+
+int     get_next_line(const int fd, char **line)
+{
+
+    if (fd)
+    {
+        while (read(fd, link, BUFF_SIZE) != 0)
+        {
+            link = link->next;
+        }
+
+    }
+    return(-1);
 }
