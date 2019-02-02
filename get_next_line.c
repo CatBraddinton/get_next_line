@@ -5,31 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 18:30:56 by kdudko            #+#    #+#             */
-/*   Updated: 2019/01/17 18:31:03 by kdudko           ###   ########.fr       */
+/*   Created: 2019/01/17 18:30:56 by kdudko            #+#    #	#             */
+/*   Updated: 2019/01/29 13:30:29 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int    buff_proccessing(char *buff, char *line)
+{
+    char *str;
+    int i;
+
+    str = (char *)malloc((BUFF_SIZE + 1) * sizeof(char));
+    i = 0;
+    while (i < BUFF_SIZE)
+    {
+        str[i] = buff[i];
+        if (str[i] == 13)
+        {
+            str[i] = '\0';
+            line = (char *) malloc(ft_strlen(str) * sizeof(char));
+            line = ft_strcpy(line, str);
+            i = 0;
+        }
+        i++;
+    }
+    if (i != BUFF_SIZE)
+        return (1);
+}
+
 int     get_next_line(const int fd, char **line)
 {
-    static char buff[BUFF_SIZE];
-    t_list      *head;
-    t_list      *link;
+	static char buff[BUFF_SIZE];
+	
+	if (fd)
+    {
+	    read(fd, buff, BUFF_SIZE);
+	    if ((buff_proccessing(buff, &line)) == 1)
+	        return (1);
 
-    if (fd)
-    {   
-        read(fd, buff, BUFF_SIZE);
-        link = ft_lstnew(buff, BUFF_SIZE);
-        head = link;
-        ft_bzero(ft_memchr((const void *)link->content, 13, BUFF_SIZE), BUFF_SIZE - sizeof(link->content));
-        *line = ft_strnew(sizeof(link->content));
-        *line = ft_memcpy(line, link->content, sizeof(link->content));
-        link = ft_lstnew(buff + sizeof(link->content), BUFF_SIZE);
-        ft_bzero(buff, BUFF_SIZE);
-        return (1);
-        
     }
-    return (-1);
+	return (-1);
 }
