@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kdudko/Desktop/gnl_git/get_next_line.h
+libft/libft.h
+/Users/kdudko/Desktop/gnl_git/libft/libft.h
+
+/Users/kdudko/Desktop/gnl_git/libft/libft.h
+stdlib.h
+-
+unistd.h
+-
+string.h
+-
+
+/Users/kdudko/Desktop/gnl_git/main.c
+string.h
+-
+stdio.h
+-
+fcntl.h
+-
+libft/libft.h
+/Users/kdudko/Desktop/gnl_git/libft/libft.h
+get_next_line.h
+/Users/kdudko/Desktop/gnl_git/get_next_line.h
+
