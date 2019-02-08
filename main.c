@@ -11,22 +11,19 @@ int main(void)
 	char 	*line;
 	int 	ret;
 	int 	lines = 0;
-	line = NULL;
-	filename = "gnl1_3.txt";
+
+	filename = "test.txt";
 	fd = open(filename, O_RDONLY);
-	// printf("main started ... \n");
+	line = NULL;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		lines++;
-		// printf("main loop started ...\n");
-		// printf("gnl returned %d\n", ret);
-			printf("%s\n", line);
-		// printf("ret = %d\n", ret);
-		// printf("lines read: %d\n", lines);
+		printf("%s\n", line);
 	}
 	if (ret == 0)
-		printf("file was read!!!\n");
+		printf("\nret = %d\nwhole file was read!!!\n", ret);
 	close(fd);
+	free(line);
 	printf("%d\n", lines);
 	return (0);
 }
