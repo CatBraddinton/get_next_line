@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 18:30:56 by kdudko            #+#    #	#             */
-/*   Updated: 2019/01/29 13:30:29 by kdudko           ###   ########.fr       */
+/*   Created: 2019/01/17 18:30:56 by kdudko            #+#    #+#             */
+/*   Updated: 2019/02/08 13:27:37 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include "get_next_line.h"
 
+#include "get_next_line.h"
+/*
 static void    *ft_realloc(void *ptr, size_t size)
 {
     void    *new_ptr;
@@ -29,7 +29,7 @@ static void    *ft_realloc(void *ptr, size_t size)
     ft_memdel(&ptr);
     return (new_ptr);
 }
-
+*/
 int             get_next_line(int fd, char **line)
 {
     static size_t   gnl_calls_counter;
@@ -39,7 +39,7 @@ int             get_next_line(int fd, char **line)
     if (fd)
     {
         loop_counter = 1;
-        if (!gnl_calls_counter)
+        if (gnl_calls_counter == 0)
         {   
             gnl_calls_counter = 1;
             if (*line)
@@ -47,11 +47,9 @@ int             get_next_line(int fd, char **line)
             if (!(*line = ft_memalloc(BUFF_SIZE + 1)))
                 return (-1);
         }
-        while (loop_counter <= BUFF_SIZE && read(fd, buf, 1))
+        while (loop_counter <= BUFF_SIZE && read(fd, buf, 1) > 0)
         {
-            if (buf[0] == 0)
-                    return (0);
-            else if (buf[0] == '\n')
+            if (buf[0] == '\n')
             {
                 gnl_calls_counter = 0;
                 return (1);
@@ -62,9 +60,14 @@ int             get_next_line(int fd, char **line)
         if (loop_counter > BUFF_SIZE)
         {
             gnl_calls_counter++;
-            *line = (char *)ft_realloc(*line, loop_counter * gnl_calls_counter);
+            *line = (char *)realloc(*line, loop_counter * gnl_calls_counter);
             get_next_line(fd, &*line);
             return (1);
+        }
+        if (read(fd, buf, 1) == 0)
+        {
+            free(*line);
+            return (0);
         }
     }
     return (-1);

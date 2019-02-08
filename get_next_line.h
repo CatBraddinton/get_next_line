@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdudko <kdudko@student.unit.ua>            +#+  +:+       +#+        */
+/*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 10:25:44 by kdudko            #+#    #+#             */
-/*   Updated: 2019/01/05 10:55:07 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/02/08 13:11:45 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft/libft.h"
 
-# define BUFF_SIZE	5000000
+# define BUFF_SIZE	144
 
 int	get_next_line(const int fd, char **line);
 
