@@ -6,7 +6,7 @@
 /*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 16:10:01 by kdudko            #+#    #+#             */
-/*   Updated: 2019/02/14 13:47:57 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/02/14 14:01:32 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,12 @@ void	buffer_to_list(gnl_list **head, char *str, char **line, const int fd)
 	{
 		if (str[i] == '\n')
 		{
-			if (!*line)
-			{
-				str[i] = '\0';
-				*line = ft_strnew(i);
-				ft_strlcpy(*line, p, i + 1);
-				p = &str[i + 1];
-			}
-			else
-			{
 				str[i] = '\0';
 				create_node(head);
 				(*head)->new_line = (char *)malloc(ft_strlen(p) + 1);
 				ft_strlcpy((*head)->new_line, p, ft_strlen(p) + 1);
 				(*head)->curr_fd = fd;
 				p = &str[i + 1];
-			}
 		}
 		i++;
 	}
@@ -121,10 +111,11 @@ int		get_next_line(const int fd, char **line)
 		buffer_to_list(&head, buffer, line, fd);
 		reverse_list(&head);
 	}
-	else if (head)
+	if (head)
 	{
 		*line = ft_strdup(head->new_line);
 		del_one_node(&head);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

@@ -19,6 +19,7 @@ int main(void)
 		printf("%s\n", line);
 		lines++;
 	}
+	printf("%d\n", lines);
 	if (ret == 0)
 		printf("\nret = %d\nwhole file was read!!!\n", ret);
 	else
