@@ -6,7 +6,7 @@
 #    By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/08 11:08:54 by kdudko            #+#    #+#              #
-#    Updated: 2019/02/08 13:13:42 by kdudko           ###   ########.fr        #
+#    Updated: 2019/02/13 16:50:55 by kdudko           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,12 @@ main.o:
 	clang $(FLAGS) $(INCL) -o main.o -c main.c
 
 clean:
-	rm get_next_line.o main.o
+	rm get_next_line.o main.o $(NAME)
 
 fclean:	clean
 	make -C libft/ fclean
 
-cleanx: fclean
-	rm $(NAME)
-
-re:	cleanx all
+re: all
 	./$(NAME)
 
 
