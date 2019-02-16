@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-# include <fcntl.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 int main(void)
@@ -8,22 +8,19 @@ int main(void)
 	char 	*filename;
 	char 	*line;
 	int 	ret;
-	int 	lines = 0;
 
 	filename = "test.txt";
 	fd = open(filename, O_RDONLY);
 	line = NULL;
-	printf("main statred\n");
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		printf("%s\n", line);
-		lines++;
+		ft_putstr(line);
+		ft_putchar('\n');
 	}
-	printf("%d\n", lines);
 	if (ret == 0)
-		printf("\nret = %d\nwhole file was read!!!\n", ret);
+		ft_putstr("whole file was read!!!\n");
 	else
-		printf("errror\n");
+		ft_putstr("errror\n");
 	close(fd);
 	return (0);
 }

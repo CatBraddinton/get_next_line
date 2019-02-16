@@ -6,7 +6,7 @@
 /*   By: kdudko <kdudko@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 10:25:44 by kdudko            #+#    #+#             */
-/*   Updated: 2019/02/14 13:46:30 by kdudko           ###   ########.fr       */
+/*   Updated: 2019/02/16 08:40:10 by kdudko           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft/libft.h"
 # include <stdio.h>
 
-# define BUFF_SIZE	144
+# define BUFF_SIZE	5
 
 typedef	struct 			s_list_gnl
 {
