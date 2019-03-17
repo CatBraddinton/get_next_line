@@ -57,8 +57,5 @@ If the program calls it in loop, get_next_line() will read whole file, unless th
   make main.o: will will compile main object file
   
   make clean: removes all oblect files and executable itself
-  
-  Feel free to change variables. As a mandatory part of this project, libft.a should compile with -Wall -Wextra -Werror flags. If you dont need them or you need to add other flags, just do it. 
-  
 
 ![EVALUATION](https://github.com/CatBraddinton/get_next_line/raw/master/Screen%20Shot%202019-03-17%20at%201.15.20%20PM.png)
